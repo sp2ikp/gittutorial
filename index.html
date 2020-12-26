@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl" >
+<head>
+	<title>SP2IKP -  home page</title>
+	<link rel="shortcut icon" href="images/sp2ikp.ico">
+	<meta http-equiv="Content-Type" 		content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="pl" />
+	<meta name="keywords" 							content="krótkofalarstwo, informatyka, elektronika, mikroprocesory, mikrokontrolery," />
+	<meta name="description" 						content="Strona po¶więcona krótkofalarstwu, informatyce, elektronice, mikroprocesorom." />
+	<meta name="Robots" 								content="ALL" />
+	<style type="text/css">
+		@import url("styles/sp2ikp.css");
+	</style>
+</head>
+<body>
+	<div id="main_wrapper" >
+		<div id="header">
+			<div id="header_inner">
+				<img src="images/baner.gif" usemap="#mapa" style="border:0">
+				<map name ="mapa">
+					<area shape="polygon" coords="0,135,120,145,120,170,0,165" 
+						href="index.php?pokaz=home">
+					<area shape="polygon" coords="120,145,320,145,320,170,120,170" 
+						href="index.php?pokaz=hobby">
+					<area shape="polygon" coords="320,145,480,145,480,165,320,170" 
+						href="index.php?pokaz=elektronika">
+					<area shape="polygon" coords="480,145,640,130,640,155,480,165" 
+						href="index.php?pokaz=informatyka">
+					<area shape="polygon" coords="660,130,860,125,860,155,660,155" 
+						href="index.php?pokaz=micro">
+					<area shape="polygon" coords="860,125,1000,135,1000,165,860,155" 
+						href="hindex.php?pokaz=galerie">
+				</map>
+			</div>
+		</div> 		
+		<div id="nav">
+			<div id="nav_inner">
+				<h3>Propagacja</h3>
+
+				<h3>Czas lokalny</h3>
+				
+				<h3>Ostania modyfikacja</h3>
+				
+				<h3>Liczba odwiedzin</h3>
+				
+			</div>
+		</div>
+		<div id="content">
+			<div id="content_inner">
+				<?php
+					$dozwolone=array('home','hobby','elektronika','informatyka','micro','linki','galerie');
+					if (isset($_GET['pokaz'])) $pokaz=$_GET['pokaz']; else $pokaz='';
+					if (!in_array($pokaz,$dozwolone)) $pokaz=$dozwolone[0];
+					if (file_exists('pages/'.$pokaz.'.html')) include('pages/'.$pokaz.'.html');
+					else if (file_exists('pages/'.$pokaz.'.php')) include('pages/'.$pokaz.'.php');
+					else echo('<span style="color:red;">Brak wskazanego pliku</span>');
+				?>
+			</div>
+		</div>
+		<div id="footer">
+			<div id="footer_inner">
+				Copyright &copy; and disigned by SP2IKP &nbsp; &nbsp; mail: <a href="mailto:sp2ikp@o2.pl"><b>SP2IKP</b></a>
+				&nbsp; &nbsp; GG: <b>6667178</b> 	&nbsp; &nbsp; Skype: <b>sp2ikp</b>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
